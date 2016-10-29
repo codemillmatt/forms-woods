@@ -1,0 +1,3 @@
+﻿<Entry.Behaviors>
+	<local:EntryEmailBehavior />
+</Entry.Behaviors>

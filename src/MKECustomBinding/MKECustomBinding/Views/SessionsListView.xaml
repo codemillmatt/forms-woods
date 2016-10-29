@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="MKECustomBinding.SessionsListView" 
+		xmlns:local="clr-namespace:MKECustomBinding" 
+		Title="{Binding Title}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:BoolToColorConverter x:Key="colorConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<StackLayout>
+			<ListView ItemsSource="{Binding SessionFeedbackList}" HasUnevenRows="true" x:Name="sessionsList">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout>
+								<Label Text="{Binding SessionName}" 
+									TextColor="{Binding Attended, Converter={StaticResource colorConverter}}" />
+								<local:TreeRating NumOfTrees="{Binding TreeRating}"  />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

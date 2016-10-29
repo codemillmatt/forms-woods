@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MKECustomBinding.SessionDetailView"
+		xmlns:local="clr-namespace:MKECustomBinding"
+		Title="{Binding Feedback.SessionName}">
+	<ContentPage.Content>
+		<StackLayout Padding="15">
+			<Label FontAttributes="Bold" Text="{Binding Feedback.SessionName}" >
+				<Label.Effects>
+					<local:LabelShadowRoutingEffect />
+				</Label.Effects>
+			</Label>
+			<Label Text="I attended this session:" />
+			<Switch IsToggled="{Binding Feedback.Attended}" />
+			<StackLayout Orientation="Horizontal">
+				<Label Text="Email"/>
+				<Entry Text="{Binding Feedback.EmailAddress}" HorizontalOptions="FillAndExpand">
+					<Entry.Behaviors>
+						<local:EntryEmailBehavior />
+					</Entry.Behaviors>
+				</Entry>
+			</StackLayout>
+			<local:TreeRating NumOfTrees="{Binding Feedback.TreeRating}"/>
+			<Button Text="Save" Command="{Binding SaveFeedbackCommand}" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
